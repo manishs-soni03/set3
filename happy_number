@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isHappy(int n) {
+    unordered_set<int> seen; 
+    
+    while (n != 1) {
+        if (seen.find(n) != seen.end()) {  before
+            return false; 
+        }
+        seen.insert(n); 
+
+        int sum = 0;
+        while (n > 0) {
+            int last = n % 10; 
+            sum += last * last; 
+            n /= 10; 
+        }
+        
+        n = sum;
+    }
+    
+    return true; 
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cout << n << " is a happy number: " << (isHappy(n) ? "true" : "false") << endl;
+    return 0;
+}
